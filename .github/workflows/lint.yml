@@ -31,5 +31,4 @@ jobs:
             SKILL.md
             examples/*.md
             references/*.md
-          config: |
-            {"default": true, "MD013": false, "MD033": false, "MD041": false, "MD034": false}
+            .github/*.md

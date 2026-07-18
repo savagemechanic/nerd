@@ -1,0 +1,22 @@
+// markdownlint-cli2 config — permissive where ASCII-art README/skill docs need it.
+// NOTE: rules MUST live under "config" for the .markdownlint-cli2.* format.
+// Keeps structural rules (headings, lists, tables) on; relaxes style rules that
+// conflict with code-as-diagrams, centered HTML wrappers, and bare links.
+{
+  "config": {
+    "default": true,
+    "MD013": false, // line-length (ASCII flowcharts + long instruction lines run wide)
+    "MD033": false, // inline HTML (<div align="center"> wrappers)
+    "MD034": false, // bare URLs
+    "MD036": false, // emphasis used as a heading ("**Before nerd**")
+    "MD040": false, // fenced code blocks without a language (ASCII art is lang-less by design)
+    "MD041": false, // first line must be a heading (README opens with a <div>)
+    "MD024": false, // multiple headings with the same text (repeated "Invariant:" in examples)
+    "MD060": false, // table-pipe spacing (tight tables in the skill taxonomy)
+    "MD022": false, // blanks around headings (dense reference entries)
+    "MD031": false, // blanks around fenced code / lists (ASCII-art blocks)
+    "MD032": false, // blanks around lists (dense reference entries)
+    "MD012": { "maximum": 3 },
+    "MD009": { "br_spaces": 0, "list_item_empty_lines": true }
+  }
+}

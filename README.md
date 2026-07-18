@@ -9,21 +9,21 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![lint](https://github.com/savagemechanic/nerd/actions/workflows/lint.yml/badge.svg)](https://github.com/savagemechanic/nerd/actions/workflows/lint.yml)
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-standard-blueviolet.svg)](https://agentskills.io)
-[![No Dependencies](https://img.shields.io/badge/dependencies-zero-green.svg)](#)
-[![Works Everywhere](https://img.shields.io/badge/works%20with-Claude%20Code%20%C2%B7%20Cursor%20%C2%B7%20Codex%20%C2%B7%20Pi%20%C2%B7%20Gemini%20CLI-orange.svg)](#works-with)
+![No Dependencies](https://img.shields.io/badge/dependencies-zero-green.svg)
+![Works Everywhere](https://img.shields.io/badge/works%20with-Claude%20Code%20%C2%B7%20Cursor%20%C2%B7%20Codex%20%C2%B7%20Pi%20%C2%B7%20Gemini%20CLI-orange.svg)
 
 </div>
 
 ---
 
-> ### The problem
+> **The problem**
 > You ask your AI agent to explain a system. It replies:
 >
 > *"The service uses a resilient coordination layer that orchestrates peer discovery and reconciles desired state across the fleet."*
 >
 > You nod. You still don't know if there's a bug. **Because prose hides invariants. Diagrams expose them.**
 >
-> ### The fix
+> **The fix**
 > `nerd` makes the agent redraw that sentence as boxes, arrows, and the literal data structures underneath — plus the **invariant** that, if broken, *is* your bug.
 
 ---
