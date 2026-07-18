@@ -7,6 +7,7 @@
 *Stop letting your agent hide behind abstractions. Force it to draw the actual machine.*
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![lint](https://github.com/savagemechanic/nerd/actions/workflows/lint.yml/badge.svg)](https://github.com/savagemechanic/nerd/actions/workflows/lint.yml)
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-standard-blueviolet.svg)](https://agentskills.io)
 [![No Dependencies](https://img.shields.io/badge/dependencies-zero-green.svg)](#)
 [![Works Everywhere](https://img.shields.io/badge/works%20with-Claude%20Code%20%C2%B7%20Cursor%20%C2%B7%20Codex%20%C2%B7%20Pi%20%C2%B7%20Gemini%20CLI-orange.svg)](#works-with)

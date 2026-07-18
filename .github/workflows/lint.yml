@@ -1,0 +1,35 @@
+name: lint
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate-skill:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Validate SKILL.md frontmatter + asset integrity
+        run: python .github/scripts/validate_skill.py
+
+      - name: Markdown lint (syntax only)
+        uses: DavidAnson/markdownlint-cli2-action@v18
+        with:
+          globs: |
+            README.md
+            SKILL.md
+            examples/*.md
+            references/*.md
+          config: |
+            {"default": true, "MD013": false, "MD033": false, "MD041": false, "MD034": false}
