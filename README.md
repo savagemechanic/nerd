@@ -6,6 +6,8 @@
 
 *Stop letting your agent hide behind abstractions. Force it to draw the actual machine.*
 
+<img src="assets/social-card.png" width="600" alt="nerd — before and after: the same login flow as vague prose vs an ASCII flowchart with the data structures drawn in and the invariant exposed">
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![lint](https://github.com/savagemechanic/nerd/actions/workflows/lint.yml/badge.svg)](https://github.com/savagemechanic/nerd/actions/workflows/lint.yml)
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-standard-blueviolet.svg)](https://agentskills.io)
