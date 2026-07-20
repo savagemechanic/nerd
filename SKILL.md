@@ -41,6 +41,32 @@ Never refuse a zoom with "it's already explained." Go as deep as asked, each lev
 
 Standardize so the human's eye learns the language once:
 
+> ### ⚠ FLOWCHARTS ARE PURE — NO PSEUDOCODE IN BOXES
+> This is the single most important rule. A flowchart is boxes + arrows
+> + labels, **nothing else**. The reader wants to *see* the machine, not
+> re-read code. A "flowchart" whose boxes contain `while (...)`, `x += 1`,
+> `foo()`, or source identifiers is code wearing a costume — the reader
+> still has to read code. **Banned inside any box or arrow label:**
+>
+> - No control syntax: `while`, `for`, `if`, `return`, `break`, `continue`.
+> - No function-call notation: no `foo()`, no `bar(x)`, no `→ return X`.
+> - No assignment or operators: no `x += 1`, no `x == y`, no `a = b`.
+> - No source identifiers/variable names: no `api_call_count`, no
+>   `iteration_budget.consume()`. Translate every one to plain English.
+> - No one-line of code masquerading as a "step."
+>
+> **Instead:** each box is one plain-English action or state ("spend one
+> budget unit", "call the model now", "paste each result into the chat").
+> Decisions are a box containing a `?` (e.g. `too big? ?`), with arrows
+> labeled `YES` / `NO` (or the concrete values). Loops are a real arrow
+> that returns to an earlier box, labeled `↺ repeat` — **never** a
+> `while` keyword. **If you catch yourself typing a parenthesis or an
+> equals sign inside a box, stop and rephrase it into English.**
+>
+> *One exception:* data-structure anatomy may show a literal shape
+> (array slots, struct fields, a labeled map) with short type/field
+> *labels* — because a label decorates a picture, it is not control flow.
+
 - **Flow direction:** top-to-bottom by default, `▼` for the main spine. Use `──` / `│` for connectors.
 - **Decision points:** a box with a `?`, branches labeled `YES` / `NO` (or the actual values) on the arrows.
 - **Data structures — show them LITERALLY**, never as vague blobs:
@@ -59,7 +85,7 @@ Standardize so the human's eye learns the language once:
 - **Boundaries:** use `════` lines to separate planes/tiers/ownership boundaries.
 
 Every diagram ends with **two** labeled lines:
-- **"Fundamental nature:"** — one sentence naming the algorithm class or data-structure behavior in plain words (e.g. "a voting algorithm over observations," "a converge/reconcile loop," "an atomic swap").
+- **"What it is:"** — one plain-English sentence naming the thing's nature (e.g. "a generate-and-act cycle," "a classify-then-recover retry loop," "an append-only list of cards"). No jargon, no code.
 - **"Invariant:"** — the condition that must hold before/during/after the flow runs. Phrase it as an assertion you could check, e.g. "at most one record per public key," "observed state monotonically approaches desired," "exactly one of {old key, new key} is live at any instant." For data structures use **"Structural invariant:"** (e.g. BST: left < root < right). If an algorithm has a loop invariant, state it scoped to the loop ("if the target exists, it lies in [lo, hi]").
 
 ## Data Structure Taxonomy (classify every piece of state)
@@ -102,17 +128,18 @@ When describing a flow, name its algorithmic nature. Read `references/dsa-taxono
 
 ## Anti-Patterns (do not do these)
 
+- **Pseudocode inside flowchart boxes.** The #1 failure mode. A "flowchart" whose boxes contain `while (...)`, `x += 1`, `foo()`, or source identifiers is not a flowchart — it is code in a costume, and the reader still has to read code. Boxes hold plain English only. Loops are drawn as a returning arrow (`↺ repeat`), decisions as a `?` box with `YES` / `NO` arrows. If you catch yourself typing a parenthesis or an equals sign inside a box, stop and rephrase. (The sole exception is literal data-structure shapes with short type/field labels.)
 - **Vague blobs.** Never draw `┌─────────┐ │ System │ └─────────┘` with no fields. Show the actual map/slice/struct.
 - **Jargon without translation.** "Coordination plane" must be followed by "one server that knows everyone's address."
 - **One giant diagram.** If a flow has >12 boxes, split it. The human navigates by zooming.
-- **Skipping the fundamental nature or the invariant.** Every diagram needs its one-breath explanation AND its stated invariant — the invariant is where correctness lives and where bugs hide.
+- **Skipping "What it is:" or the invariant.** Every diagram needs its one-breath explanation AND its stated invariant — the invariant is where correctness lives and where bugs hide.
 - **Reading the target wrong.** Always read the actual code/files before drawing. Never invent a data structure; if you're unsure, say so and read more.
 
 ## Workflow
 
 1. **Read the target.** Use `read`/`grep`/`bash` on the code or doc the human pointed at. Do not draw from memory until you've grounded it in the real source.
 2. **Identify the layers** — components, flows, data structures, algorithms.
-3. **Draw big-picture → per-flow → anatomy**, each as ASCII, each with a "Fundamental nature:" line.
+3. **Draw big-picture → per-flow → anatomy**, each as a **pure ASCII flowchart** (no pseudocode in boxes — see the rule above), each with a "What it is:" line.
 4. **End with the one-line summary table.**
 5. **Offer zooms.** List 2-4 specific things the human might want to go deeper on.
 6. **On any zoom request, expand only that node** to the requested depth, reading deeper into the code as needed.
